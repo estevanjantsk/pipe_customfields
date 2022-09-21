@@ -26,7 +26,8 @@ config :pipe_customfields, PipeCustomfieldsWeb.Endpoint,
   secret_key_base: "yF8ft3tiRzY4oOmASn2oxs8xW7prJbTcTX58HvBC3ZPB1Fvybx5TSCoUf/bgUdXp",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
