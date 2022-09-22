@@ -5,11 +5,7 @@ defmodule PipeCustomfieldsWeb.SignInLive do
     ~H"""
     <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img
-          class="mx-auto h-12 w-auto"
-          src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-          alt="Workflow"
-        />
+        <img class="mx-auto h-12 w-auto rounded-full" src="https://s3-alpha.figma.com/profile/76f10437-4ac1-4a09-81f4-37f54f3fbc37" alt="Pipedrive">
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign in to your account
         </h2>
