@@ -2,6 +2,7 @@ defmodule PipeCustomfieldsWeb.UserAuth do
   import Plug.Conn
   import Phoenix.Controller
 
+  alias Phoenix.LiveView
   alias PipeCustomfields.Accounts
   alias PipeCustomfieldsWeb.Router.Helpers, as: Routes
 
@@ -11,6 +12,16 @@ defmodule PipeCustomfieldsWeb.UserAuth do
   @max_age 60 * 60 * 24 * 60
   @remember_me_cookie "_pipe_customfields_web_user_remember_me"
   @remember_me_options [sign: true, max_age: @max_age, same_site: "Lax"]
+
+  def on_mount(:current_user, _params, session, socket) do
+    case session do
+      %{"user_id" => user_id} ->
+        {:cont, LiveView.assign_new(socket, :current_user, fn -> Accounts.get_user(user_id) end)}
+
+      %{} ->
+        {:cont, LiveView.assign(socket, :current_user, nil)}
+    end
+  end
 
   @doc """
   Logs the user in.

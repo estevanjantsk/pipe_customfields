@@ -83,6 +83,10 @@ defmodule PipeCustomfieldsWeb.Router do
   scope "/", PipeCustomfieldsWeb do
     pipe_through [:browser]
 
+    live_session :default, on_mount: [{PipeCustomfieldsWeb.UserAuth, :current_user}] do
+      live "/signin", SignInLive, :index
+    end
+
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
